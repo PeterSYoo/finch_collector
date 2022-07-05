@@ -14,6 +14,26 @@ nav {
   background-color: rgb(75, 72, 78);
 }
 
+/* unvisited link */
+nav > a:link {
+  color: white;
+}
+
+/* visited link */
+nav > a:visited {
+  color: white;
+}
+
+/* mouse over link */
+nav > a:hover {
+  color: rgb(195, 195, 195);
+}
+
+/* selected link */
+nav > a:active {
+  color: white;
+}
+
 main {
   flex: 1 0 auto;
 }
@@ -29,4 +49,24 @@ main {
 
 .card {
   border-radius: 15px;
+}
+
+/* unvisited link */
+.card > a:link {
+  color: black;
+}
+
+/* visited link */
+.card > a:visited {
+  color: black;
+}
+
+/* mouse over link */
+.card > a:hover {
+  color: rgb(73, 73, 73);
+}
+
+/* selected link */
+.card > a:active {
+  color: rgb(56, 56, 56);
 }
