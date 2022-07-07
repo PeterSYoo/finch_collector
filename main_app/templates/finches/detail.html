@@ -56,6 +56,47 @@
   </div>
 </div>
 
+
+<!-- This is all new markup to be added just above the <script> tag -->
+<hr />
+<div class="row">
+  <div class="col s6">
+    <h3>{{ finch.name }}'s Seeds</h3>
+    {% if finch.seeds.count %} {% for seed in finch.seeds.all %}
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ seed.name }}</span>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <h5>No Seeds :(</h5>
+    {% endif %}
+  </div>
+  <!-- Available seeds will come after this line -->
+  <div class="col s6">
+    <h3>Available Seeds</h3>
+    {% if seeds.count %}
+      {% for seed in seeds.all %}
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              A <span style="color: {{ seed.color }}">{{ seed.color }}</span> {{ seed.name }}
+            </span>
+          </div>
+          <div class="card-action">
+            <form action="{% url 'assoc_seed' finch.id seed.id %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn">Add</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <h5>{{finch.name}} Already Has All Seeds Available</h5>
+    {% endif %}
+  </div>
+</div>
+
 <script>
   let dateEl = document.getElementById('id_date');
   M.Datepicker.init(dateEl, {

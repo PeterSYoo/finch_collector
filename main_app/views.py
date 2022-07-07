@@ -19,11 +19,13 @@ def finches_index(request):
 
 def finches_detail(request, finch_id):
   finch = Finch.objects.get(id=finch_id)
-  # instantiate FeedingForm to be rendered in the template
+  # Get the seeds the finch doesn't have
+  seeds_finch_doesnt_have = Seed.objects.exclude(id__in = finch.seeds.all().values_list('id'))
   feeding_form = FeedingForm()
   return render(request, 'finches/detail.html', {
-    # include the finch and feeding_form in the context
-    'finch': finch, 'feeding_form': feeding_form
+    'finch': finch, 'feeding_form': feeding_form,
+    # Add the seeds to be displayed
+    'seeds': seeds_finch_doesnt_have
   })
 
 def add_feeding(request, finch_id):
@@ -36,6 +38,11 @@ def add_feeding(request, finch_id):
     new_feeding = form.save(commit=False)
     new_feeding.finch_id = finch_id
     new_feeding.save()
+  return redirect('detail', finch_id=finch_id)
+
+def assoc_seed(request, finch_id, seed_id):
+  # Note that you can pass a seed's id instead of the whole object
+  Finch.objects.get(id=finch_id).seeds.add(seed_id)
   return redirect('detail', finch_id=finch_id)
 
 class FinchCreate(CreateView):
