@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Finch
+from django.views.generic.detail import DetailView
+from .models import Finch, Seed
 from .forms import FeedingForm
 
 # Create your views here.
@@ -49,3 +51,23 @@ class FinchUpdate(UpdateView):
 class FinchDelete(DeleteView):
   model = Finch
   success_url = '/finches/'
+
+class SeedList(ListView):
+  model = Seed
+  template_name = 'seeds/index.html'
+
+class SeedDetail(DetailView):
+  model = Seed
+  template_name = 'seeds/detail.html'
+
+class SeedCreate(CreateView):
+  model = Seed
+  fields = ['name']
+
+class SeedUpdate(UpdateView):
+  model = Seed
+  fields = ['name']
+
+class SeedDelete(DeleteView):
+  model = Seed
+  success_url = '/seeds/'

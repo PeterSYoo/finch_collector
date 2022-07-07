@@ -9,6 +9,15 @@ MEALS = (
 )
 
 # Create your models here.
+class Seed(models.Model):
+  name = models.CharField(max_length=50)
+
+  def __str__(self):
+    return f'{self.name}'
+
+  def get_absolute_url(self):
+    return reverse('seeds_detail', kwargs={'pk': self.id})
+
 class Finch(models.Model):
   name = models.CharField(max_length=100)
   breed = models.CharField(max_length=100)
