@@ -12,7 +12,7 @@ import boto3
 from .models import Finch, Seed, Photo
 from .forms import FeedingForm, SignUpForm
 
-session = boto3.Session(profile_name='finchcollector')
+# session = boto3.Session(profile_name='finchcollector')
 
 S3_BASE_URL = 'https://s3.us-west-1.amazonaws.com/'
 BUCKET = 'finchcollector-py'
