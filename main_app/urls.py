@@ -12,6 +12,7 @@ urlpatterns = [
   path('finches/<int:finch_id>/add_feeding/', views.add_feeding, name='add_feeding'),
   # associate a seed with a finch (M:M)
   path('finches/<int:finch_id>/assoc_seed/<int:seed_id>/', views.assoc_seed, name='assoc_seed'),
+  path('finches/<int:finch_id>/add_photo/', views.add_photo, name='add_photo'),
   path('seeds/', views.SeedList.as_view(), name='seeds_index'),
   path('seeds/<int:pk>/', views.SeedDetail.as_view(), name='seeds_detail'),
   path('seeds/create/', views.SeedCreate.as_view(), name='seeds_create'),
