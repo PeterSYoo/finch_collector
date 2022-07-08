@@ -29,11 +29,16 @@
         </ul>
         <ul class="right">
           <li><a href="{% url 'about' %}">About</a></li>
-          <!-- new link below -->
+          {% if user.is_authenticated %}
           <li><a href="{% url 'finches_create' %}">Add a Finch</a></li>
           <li><a href="{% url 'index' %}">View All My Finches</a></li>
           <li><a href="{% url 'seeds_index' %}">View All Seeds</a></li>
           <li><a href="{% url 'seeds_create' %}">Add a Seed</a></li>
+          <li><a href="{% url 'logout' %}">Log Out</a></li>
+          {% else %}
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+          <li><a href="{% url 'login' %}">Log In</a></li>
+          {% endif %}
         </ul>
       </div>
     </nav>

@@ -18,4 +18,5 @@ urlpatterns = [
   path('seeds/create/', views.SeedCreate.as_view(), name='seeds_create'),
   path('seeds/<int:pk>/update/', views.SeedUpdate.as_view(), name='seeds_update'),
   path('seeds/<int:pk>/delete/', views.SeedDelete.as_view(), name='seeds_delete'),
+  path('accounts/signup/', views.signup, name='signup'),
 ]
