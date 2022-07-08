@@ -11,7 +11,4 @@ class SignUpForm(UserCreationForm):
   class Meta:
     model = User
     fields = ['email', 'username', 'first_name', 'last_name']
-    
-
-
-    # how to change type attributes in model form Django, manually set input type to password
+  
