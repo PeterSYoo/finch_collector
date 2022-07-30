@@ -36,7 +36,8 @@ def finches_detail(request, finch_id):
   seeds_finch_doesnt_have = Seed.objects.exclude(id__in = finch.seeds.all().values_list('id'))
   feeding_form = FeedingForm()
   return render(request, 'finches/detail.html', {
-    'finch': finch, 'feeding_form': feeding_form,
+    'finch': finch, 
+    'feeding_form': feeding_form,
     # Add the seeds to be displayed
     'seeds': seeds_finch_doesnt_have
   })
